@@ -12,7 +12,7 @@ const cardOutputAnswerFirstCard = document.querySelector(
 );
 
 cardButtonBookmarkFirstCard.addEventListener("click", () => {
-  cardButtonBookmark1.classList.toggle("bookmark--active");
+  cardButtonBookmarkFirstCard.classList.toggle("bookmark--active");
 });
 
 cardButtonAnswerFirstCard.addEventListener("click", () => {
