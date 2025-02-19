@@ -13,7 +13,7 @@
       <h1 class="header__title">New Question</h1>
     </header>
     <main>
-      <form action="submit">
+      <form action="submit" data-js="newCard__form">
         <label for="newCard__input--newQuestion">Your question:</label>
         <textarea
           name="newQuestion"
@@ -25,7 +25,7 @@
         <textarea name="newAnswer" id="newCard__input--newAnswer"></textarea>
         <label for="newCard__input--newTag">Tag:</label>
         <input type="text" name="newTag" id="newCard__input--newTag" />
-        <button type="submit">Submit</button>
+        <button type="submit" class="form-button">Submit</button>
       </form>
     </main>
 
