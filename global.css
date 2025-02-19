@@ -67,3 +67,11 @@ img {
   height: auto;
   display: block;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 10rem 2rem 4rem 2rem;
+  max-width: 45rem;
+  margin: 0 auto;
+}
