@@ -20,6 +20,7 @@
           id="newCard__input--newQuestion"
           rows="10"
           cols=" 50"
+          maxlength="200"
         ></textarea>
         <div
           class="form__div--charCount"
@@ -28,7 +29,11 @@
           200 characters left
         </div>
         <label for="newCard__input--newAnswer">Your answer:</label>
-        <textarea name="newAnswer" id="newCard__input--newAnswer"></textarea>
+        <textarea
+          name="newAnswer"
+          id="newCard__input--newAnswer"
+          maxlength="100"
+        ></textarea>
         <div
           class="form__div--charCount"
           data-js="newCard__div__charCount--Answer"
