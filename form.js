@@ -5,6 +5,27 @@ const newCardsListElement = document.querySelector(
   '[data-js = "newCards_list"]'
 );
 
+const newQuestionCharCountElement = document.querySelector(
+  '[data-js = "newCard__div__charCount--Question"]'
+);
+const newAnswerCharCountElement = document.querySelector(
+  '[data-js = "newCard__div__charCount--Answer"]'
+);
+const newQuestionInputElement = document.getElementById(
+  "newCard__input--newQuestion"
+);
+const newAnswerInputElement = document.getElementById(
+  "newCard__input--newAnswer"
+);
+
+const newQuestionMaxChars = newQuestionInputElement.maxLength;
+const newAnswerMaxChars = newAnswerInputElement.maxLength;
+
+// Initial adjustments to elements and their content
+newQuestionCharCountElement.textContent = `${newQuestionMaxChars} characters left`;
+newAnswerCharCountElement.textContent = `${newAnswerMaxChars} characters left`;
+
+// Interactivity elements
 formElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -57,7 +78,6 @@ formElement.addEventListener("submit", (event) => {
         `;
 
   // append new element to main
-  console.log(newCardListItem);
   newCardsListElement.append(newCardListItem);
 
   //Add interactivity for new buttons
@@ -77,17 +97,18 @@ formElement.addEventListener("submit", (event) => {
 
   newCardsAnswerButtonElement.addEventListener("click", () => {
     newCarsAnswerElement.classList.toggle("card__answer--active");
-    console.log(newCardsAnswerButtonElement.innerText);
     newCardsAnswerButtonElement.innerText == "Show answer"
       ? (newCardsAnswerButtonElement.textContent = "Hide answer")
       : (newCardsAnswerButtonElement.textContent = "Show answer");
   });
 });
 
-formElement.addEventListener("input", (event) => {
-  //   event.preventDefault();
-  console.log(event.data);
-  const formData = new FormData(event.target);
-  const inputData = Object.fromEntries(formData);
-  console.log(inputData);
+newQuestionInputElement.addEventListener("input", () => {
+  const charsLeft = newQuestionMaxChars - newQuestionInputElement.value.length;
+  newQuestionCharCountElement.textContent = `${charsLeft} characters left`;
+});
+
+newAnswerInputElement.addEventListener("input", () => {
+  const charsLeft = newAnswerMaxChars - newAnswerInputElement.value.length;
+  newAnswerCharCountElement.textContent = `${charsLeft} characters left`;
 });
