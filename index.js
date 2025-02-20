@@ -17,4 +17,7 @@ cardButtonBookmarkFirstCard.addEventListener("click", () => {
 
 cardButtonAnswerFirstCard.addEventListener("click", () => {
   cardOutputAnswerFirstCard.classList.toggle("card__answer--active");
+  cardButtonAnswerFirstCard.innerText == "Show answer"
+    ? (cardButtonAnswerFirstCard.textContent = "Hide answer")
+    : (cardButtonAnswerFirstCard.textContent = "Show answer");
 });

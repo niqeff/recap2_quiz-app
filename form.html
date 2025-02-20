@@ -20,13 +20,31 @@
           id="newCard__input--newQuestion"
           rows="10"
           cols=" 50"
+          maxlength="200"
         ></textarea>
+        <div
+          class="form__div--charCount"
+          data-js="newCard__div__charCount--Question"
+        >
+          200 characters left
+        </div>
         <label for="newCard__input--newAnswer">Your answer:</label>
-        <textarea name="newAnswer" id="newCard__input--newAnswer"></textarea>
+        <textarea
+          name="newAnswer"
+          id="newCard__input--newAnswer"
+          maxlength="100"
+        ></textarea>
+        <div
+          class="form__div--charCount"
+          data-js="newCard__div__charCount--Answer"
+        >
+          100 characters left
+        </div>
         <label for="newCard__input--newTag">Tag:</label>
         <input type="text" name="newTag" id="newCard__input--newTag" />
         <button type="submit" class="form-button">Submit</button>
       </form>
+      <ul data-js="newCards_list" class="card-list"></ul>
     </main>
 
     <nav class="navigation">

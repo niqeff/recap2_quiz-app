@@ -5,6 +5,27 @@ const newCardsListElement = document.querySelector(
   '[data-js = "newCards_list"]'
 );
 
+const newQuestionCharCountElement = document.querySelector(
+  '[data-js = "newCard__div__charCount--Question"]'
+);
+const newAnswerCharCountElement = document.querySelector(
+  '[data-js = "newCard__div__charCount--Answer"]'
+);
+const newQuestionInputElement = document.getElementById(
+  "newCard__input--newQuestion"
+);
+const newAnswerInputElement = document.getElementById(
+  "newCard__input--newAnswer"
+);
+
+const newQuestionMaxChars = newQuestionInputElement.maxLength;
+const newAnswerMaxChars = newAnswerInputElement.maxLength;
+
+// Initial adjustments to elements and their content
+newQuestionCharCountElement.textContent = `${newQuestionMaxChars} characters left`;
+newAnswerCharCountElement.textContent = `${newAnswerMaxChars} characters left`;
+
+// Interactivity elements
 formElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -40,7 +61,7 @@ formElement.addEventListener("submit", (event) => {
                 class="bookmark"
                 aria-label="bookmark"
                 type="button"
-                data-js="card__button-bookmark--card1"
+                data-js="card__button-bookmark"
                 >
                 <svg
                     class="bookmark__icon"
@@ -57,6 +78,37 @@ formElement.addEventListener("submit", (event) => {
         `;
 
   // append new element to main
-  console.log(newCardListItem);
   newCardsListElement.append(newCardListItem);
+
+  //Add interactivity for new buttons
+  const newCardsBookmarkButtonElement = newCardsListElement.querySelector(
+    '[data-js="card__button-bookmark"]'
+  );
+  newCardsBookmarkButtonElement.addEventListener("click", () => {
+    newCardsBookmarkButtonElement.classList.toggle("bookmark--active");
+  });
+
+  const newCardsAnswerButtonElement = newCardsListElement.querySelector(
+    '[data-js="card__button-answer"]'
+  );
+  const newCarsAnswerElement = newCardsListElement.querySelector(
+    '[data-js="card__answer"]'
+  );
+
+  newCardsAnswerButtonElement.addEventListener("click", () => {
+    newCarsAnswerElement.classList.toggle("card__answer--active");
+    newCardsAnswerButtonElement.innerText == "Show answer"
+      ? (newCardsAnswerButtonElement.textContent = "Hide answer")
+      : (newCardsAnswerButtonElement.textContent = "Show answer");
+  });
+});
+
+newQuestionInputElement.addEventListener("input", () => {
+  const charsLeft = newQuestionMaxChars - newQuestionInputElement.value.length;
+  newQuestionCharCountElement.textContent = `${charsLeft} characters left`;
+});
+
+newAnswerInputElement.addEventListener("input", () => {
+  const charsLeft = newAnswerMaxChars - newAnswerInputElement.value.length;
+  newAnswerCharCountElement.textContent = `${charsLeft} characters left`;
 });

@@ -13,3 +13,9 @@ form {
   min-height: 2.5rem;
   align-self: center;
 }
+
+.form__div--charCount {
+  align-self: flex-end;
+  font-size: 0.6rem;
+  color: grey;
+}
