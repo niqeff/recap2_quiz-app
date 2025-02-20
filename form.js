@@ -40,7 +40,7 @@ formElement.addEventListener("submit", (event) => {
                 class="bookmark"
                 aria-label="bookmark"
                 type="button"
-                data-js="card__button-bookmark--card1"
+                data-js="card__button-bookmark"
                 >
                 <svg
                     class="bookmark__icon"
@@ -59,4 +59,35 @@ formElement.addEventListener("submit", (event) => {
   // append new element to main
   console.log(newCardListItem);
   newCardsListElement.append(newCardListItem);
+
+  //Add interactivity for new buttons
+  const newCardsBookmarkButtonElement = newCardsListElement.querySelector(
+    '[data-js="card__button-bookmark"]'
+  );
+  newCardsBookmarkButtonElement.addEventListener("click", () => {
+    newCardsBookmarkButtonElement.classList.toggle("bookmark--active");
+  });
+
+  const newCardsAnswerButtonElement = newCardsListElement.querySelector(
+    '[data-js="card__button-answer"]'
+  );
+  const newCarsAnswerElement = newCardsListElement.querySelector(
+    '[data-js="card__answer"]'
+  );
+
+  newCardsAnswerButtonElement.addEventListener("click", () => {
+    newCarsAnswerElement.classList.toggle("card__answer--active");
+    console.log(newCardsAnswerButtonElement.innerText);
+    newCardsAnswerButtonElement.innerText == "Show answer"
+      ? (newCardsAnswerButtonElement.textContent = "Hide answer")
+      : (newCardsAnswerButtonElement.textContent = "Show answer");
+  });
+});
+
+formElement.addEventListener("input", (event) => {
+  //   event.preventDefault();
+  console.log(event.data);
+  const formData = new FormData(event.target);
+  const inputData = Object.fromEntries(formData);
+  console.log(inputData);
 });
